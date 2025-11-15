@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.div{
+height:200px;
+display:grid;grid-template-columns:repeat(4,1fr);/*sinon il vont divisee en ligne n'est pas en colonne*/
+gap:10px; /*entre les div/button */
+}
+button{
+text-align: center;color: white;font-size: 20px;
+padding:20px; /*entre l'ecriture et le bordure*/
+border:none;border-radius:8px;
+cursor:pointer;
+transition: all 1.2s ease;
+}
+button:hover {transform: scale(1.05);} /*agrandie de 5% */
+button:active{transform:scale(0.95);} /*moins de 5% */
+.rouge:hover{background-color: #FF5252;}
+.rouge:active{background-color: #FF1744;}
+.rouge{background-color: red;}
+.bleu{background-color:turquoise;}
+.bleu:hover{background-color:#26C6DA;}
+.bleu:active{background-color:#00ACC1;}
+.jaune{background-color:yellow;}   
+.jaune:hover{background-color:#FFCA28;}   
+.jaune:active{background-color:#FFB300;}   
+.vert{background-color:green;}
+.vert:hover{background-color:#00C853;}
+.vert:active{background-color:#00B248;}
+.message{
+    height:20px;
+    font-size:20px;
+    padding:20px; /*entre l'ecriture et bordure*/
+    margin:15px 5px; /*entre le bordure et ce qui est avant/après */
+    text-align:center;
+    background-color:rgb(223, 210, 210);
+    border:none; border-radius:5px;
+}
+.reset{
+    background-color:grey;
+    cursor: pointer;
+    padding: 15px 25px; /*haut/bas droite/gauche */
+    margin: 15px;
+}
+.reset:hover{background-color: #555;}
+   </style>
+</head>
+<body>
+    <div class="div"> <!--de 200px-->
+      <button class="rouge" onclick="couleur('rouge')" >Rouge</button>
+      <button class="bleu" onclick="couleur('bleu')" >Bleu</button>
+      <button class="jaune" onclick="couleur('jaune')" >Jaune</button>
+      <button onclick="couleur('vert')" class="vert" >Vert</button>
+    </div>
+    <div class="message" id="message"> Cliquer sur un des boutons colorés </div>
+    <div style="text-align:center;">
+        <button class="reset" onclick="reset()" >Reset</button>
+    </div>
+<script>
+    function couleur(C) {
+        let message =document.getElementById('message');
+        if(C=='rouge') message.textContent="Rouge";
+        else if(C=='bleu') message.textContent="Bleu";
+        else if(C=='jaune') message.textContent="Jaune";
+        else if(C=='vert') message.textContent="Vert";
+        
+    }
+    function reset(){
+        document.getElementById('message').textContent="Cliquer sur un des boutons colorés";
+    }
+</script>
+</body>
+</html>
