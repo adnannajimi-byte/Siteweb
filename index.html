@@ -1,224 +1,77 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma Calculatrice Simple</title>
+    <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .calculatrice {
-            background-color: #2c2c2c;
-            padding: 20px;
-            border-radius: 15px;
-            width: 280px;
-        }
-
-        .ecran {
-            background-color: #000;
-            color: white;
-            font-size: 32px;
-            padding: 15px;
-            text-align: right;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            min-height: 50px;
-        }
-
-        .boutons {
-            display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;gap: 10px;
-        }
-
-        button {
-            height: 60px;
-            font-size: 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .bouton-gris {
-            background-color: #a5a5a5;
-        }
-
-        .bouton-orange {
-            background-color: #ff9500;
-            color: white;
-        }
-
-        .bouton-noir {
-            background-color: #333;
-            color: white;
-        }
-
-        .bouton-egal {
-            grid-column: span 2;
-        }
-
-        /* EFFETS MOUSEOVER POUR LES BOUTONS GRIS */
-        .bouton-gris:hover {
-            background-color: #d4d4d4;
-            transform: scale(1.05);
-        }
-
-        /* EFFETS MOUSEOVER POUR LES BOUTONS ORANGE */
-        .bouton-orange:hover {
-            background-color: #ffb143;
-            transform: scale(1.05);
-        }
-
-        /* EFFETS MOUSEOVER POUR LES BOUTONS NOIRS */
-        .bouton-noir:hover {
-            background-color: #555;
-            transform: scale(1.05);
-        }
-
-        /* EFFET QUAND ON CLIQUE SUR UN BOUTON */
-        button:active {
-            transform: scale(0.95);
-        }
-    </style>
+.div{
+height:200px;
+display:grid;grid-template-columns:repeat(4,1fr);/*sinon il vont divisee en ligne n'est pas en colonne*/
+gap:10px; /*entre les div/button */
+}
+button{
+text-align: center;color: white;font-size: 20px;
+padding:20px; /*entre l'ecriture et le bordure*/
+border:none;border-radius:8px;
+cursor:pointer;
+transition: all 1.2s ease;
+}
+button:hover {transform: scale(1.05);} /*agrandie de 5% */
+button:active{transform:scale(0.95);} /*moins de 5% */
+.rouge:hover{background-color: #FF5252;}
+.rouge:active{background-color: #FF1744;}
+.rouge{background-color: red;}
+.bleu{background-color:turquoise;}
+.bleu:hover{background-color:#26C6DA;}
+.bleu:active{background-color:#00ACC1;}
+.jaune{background-color:yellow;}   
+.jaune:hover{background-color:#FFCA28;}   
+.jaune:active{background-color:#FFB300;}   
+.vert{background-color:green;}
+.vert:hover{background-color:#00C853;}
+.vert:active{background-color:#00B248;}
+.message{
+    height:20px;
+    font-size:20px;
+    padding:20px; /*entre l'ecriture et bordure*/
+    margin:15px 5px; /*entre le bordure et ce qui est avant/après */
+    text-align:center;
+    background-color:rgb(223, 210, 210);
+    border:none; border-radius:5px;
+}
+.reset{
+    background-color:grey;
+    cursor: pointer;
+    padding: 15px 25px; /*haut/bas droite/gauche */
+    margin: 15px;
+}
+.reset:hover{background-color: #555;}
+   </style>
 </head>
 <body>
-    <div class="calculatrice">
-        <div class="ecran" id="ecran">0</div>
-        
-        <div class="boutons">
-            <button class="bouton-gris" onclick="boutonC()">C</button>
-            <button class="bouton-gris" onclick="boutonPourcent()">%</button>
-            <button class="bouton-gris" onclick="boutonRetour()">⌫</button>
-            <button class="bouton-orange" onclick="boutonDiviser()">/</button>
-            
-            <button class="bouton-noir" onclick="boutonChiffre(7)">7</button>
-            <button class="bouton-noir" onclick="boutonChiffre(8)">8</button>
-            <button class="bouton-noir" onclick="boutonChiffre(9)">9</button>
-            <button class="bouton-orange" onclick="boutonMultiplier()">×</button>
-            
-            <button class="bouton-noir" onclick="boutonChiffre(4)">4</button>
-            <button class="bouton-noir" onclick="boutonChiffre(5)">5</button>
-            <button class="bouton-noir" onclick="boutonChiffre(6)">6</button>
-            <button class="bouton-orange" onclick="boutonSoustraire()">-</button>
-            
-            <button class="bouton-noir" onclick="boutonChiffre(1)">1</button>
-            <button class="bouton-noir" onclick="boutonChiffre(2)">2</button>
-            <button class="bouton-noir" onclick="boutonChiffre(3)">3</button>
-            <button class="bouton-orange" onclick="boutonAdditionner()">+</button>
-            
-            <button class="bouton-noir" onclick="boutonChiffre(0)">0</button>
-            <button class="bouton-noir" onclick="boutonPoint()">.</button>
-            <button class="bouton-orange bouton-egal" onclick="boutonEgal()">=</button>
-        </div>
+    <div class="div"> <!--de 200px-->
+      <button class="rouge" onclick="couleur('rouge')" >Rouge</button>
+      <button class="bleu" onclick="couleur('bleu')" >Bleu</button>
+      <button class="jaune" onclick="couleur('jaune')" >Jaune</button>
+      <button onclick="couleur('vert')" class="vert" >Vert</button>
     </div>
-
-    <script>
-        // MÉMOIRE de la calculatrice
-        let ceQuOnTape = "0"; 
-        let ecran = document. getElementById("ecran");
-        ecran.textContent = ceQuOnTape;
-
-        // FONCTION POUR LES CHIFFRES
-        function boutonChiffre(chiffre) {
-            if (ceQuOnTape === "0") {
-                ceQuOnTape = chiffre.toString();
-            } else {
-                ceQuOnTape = ceQuOnTape + chiffre.toString();
-            }
-            ecran.textContent = ceQuOnTape;
-        }
-
-        // FONCTION POUR LE POINT
-        function boutonPoint() {
-            // On regarde le DERNIER caractère de ceQuOnTape
-            let dernierCaractere = ceQuOnTape[ceQuOnTape.length - 1];
-            
-            // Si le dernier caractère n'est pas un point, on peut ajouter un point
-            if (dernierCaractere !== '.') {
-                ceQuOnTape = ceQuOnTape + '.';
-                ecran.textContent = ceQuOnTape;
-            }
-        }
-
-        // FONCTIONS POUR LES OPÉRATIONS
-        function boutonAdditionner() {
-            let dernierCaractere = ceQuOnTape[ceQuOnTape.length - 1];
-            if (dernierCaractere !== '+') {
-                ceQuOnTape = ceQuOnTape + '+';
-                ecran.textContent = ceQuOnTape;
-            }
-        }
-
-        function boutonSoustraire() {
-            let dernierCaractere = ceQuOnTape[ceQuOnTape.length - 1];
-            if (dernierCaractere !== '-') {
-                ceQuOnTape = ceQuOnTape + '-';
-                ecran.textContent = ceQuOnTape;
-            }
-        }
-
-        function boutonMultiplier() {
-            let dernierCaractere = ceQuOnTape[ceQuOnTape.length - 1];
-            if (dernierCaractere !== '×') {
-                ceQuOnTape = ceQuOnTape + '×';
-                ecran.textContent = ceQuOnTape;
-            }
-        }
-
-        function boutonDiviser() {
-            let dernierCaractere = ceQuOnTape[ceQuOnTape.length - 1];
-            if (dernierCaractere !== '/') {
-                ceQuOnTape = ceQuOnTape + '/';
-                ecran.textContent = ceQuOnTape;
-            }
-        }
-
-        // FONCTION POURCENTAGE
-        function boutonPourcent() {
-            let nombre = ceQuOnTape*1; // .toString() != *1
-            let resultat = nombre / 100;
-            ceQuOnTape = resultat.toString();
-            ecran.textContent = ceQuOnTape;
-        }
-
-        // FONCTION EFFACER TOUT
-        function boutonC() {
-            ceQuOnTape = "0";
-            ecran.textContent = ceQuOnTape;
-        }
-
-        // FONCTION EFFACER DERNIER CARACTÈRE
-        function boutonRetour() {
-            if (ceQuOnTape.length >= 2) {
-                ceQuOnTape = ceQuOnTape.slice(0, -1);
-            } else {
-                ceQuOnTape = "0";
-            }
-            ecran.textContent = ceQuOnTape;
-        }
-
-        // FONCTION CALCULER
-        function boutonEgal() {
-            let calcul = ceQuOnTape.replace('×', '*'); //s'il existe , sinon c'est pas grave .repalce(hadi li3dna , b hadi)
-            let dernierCaractere = calcul[calcul.length - 1];
-            
-            if (dernierCaractere === '+' || dernierCaractere === '-' || 
-                dernierCaractere === '*' || dernierCaractere === '/') {
-                ecran.textContent = "Erreur";
-                ceQuOnTape = "0";
-                return;
-            }
-            
-            ceQuOnTape = eval(calcul).toString();
-            ecran.textContent = ceQuOnTape;
-        }
-    </script>
+    <div class="message" id="message"> Cliquer sur un des boutons colorés </div>
+    <div style="text-align:center;">
+        <button class="reset" onclick="reset()" >Reset</button>
+    </div>
+<script>
+    function couleur(C) {
+        let message =document.getElementById('message');
+        if(C=='rouge') message.textContent="Rouge";
+        else if(C=='bleu') message.textContent="Bleu";
+        else if(C=='jaune') message.textContent="Jaune";
+        else if(C=='vert') message.textContent="Vert";
+        
+    }
+    function reset(){
+        document.getElementById('message').textContent="Cliquer sur un des boutons colorés";
+    }
+</script>
 </body>
 </html>
